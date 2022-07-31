@@ -7,7 +7,7 @@ app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
 app.get('/data', (req, res) => {
-  console.log('/data');
+  console.log('/data  ');
   res.send({ data: data() });
 });
 
