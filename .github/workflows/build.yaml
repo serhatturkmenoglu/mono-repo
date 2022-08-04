@@ -49,6 +49,7 @@ jobs:
            npx nx affected --target=lint --parallel=3
            npx nx affected --target=test --parallel=3 --ci --code-coverage
            npx nx affected --target=build --parallel=3
+           npx nx affected --target=deploy --parallel=3
       - run: npx nx-cloud stop-all-agents
       - name: Tag main branch if all jobs succeed
         uses: nrwl/nx-tag-successful-ci-run@v1
