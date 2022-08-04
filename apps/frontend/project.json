@@ -97,14 +97,23 @@
         "passWithNoTests": true
       }
     },
-    "deploy": {
-      "builder": "@nrwl/workspace:run-commands",
+    "docker": {
+      "executor": "@nx-tools/nx-docker:build",
       "options": {
-        "commands": [
-          "nx build api",
-          "docker build -f ./Dockerfile . -t frontend"
-        ],
-        "parallel": false
+        "metadata": {
+          "images": ["ghcr.io/serhatturkmenoglu/mono-repo/frontend"],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=ref,event=pr",
+            "type=semver,pattern={{version}}",
+            "type=semver,pattern={{major}}.{{minor}}",
+            "type=semver,pattern={{major}}",
+            "type=sha,prefix=sha-"
+          ]
+        }
       }
     }
   },
