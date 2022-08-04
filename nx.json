@@ -42,7 +42,7 @@
         "projects": "dependencies"
       }
     ],
-    "docker": [
+    "deploy": [
       {
         "target": "build",
         "projects": "self"
