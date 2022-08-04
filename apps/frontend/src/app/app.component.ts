@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
    console.log(data());
    console.log("merhaba");
   }
+  
   constructor(public http: HttpClient){
     http.get('/api').subscribe(console.log)
   }

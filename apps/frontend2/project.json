@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/frontend2",
         "index": "apps/frontend2/src/index.html",
@@ -17,7 +19,9 @@
           "apps/frontend2/src/favicon.ico",
           "apps/frontend2/src/assets"
         ],
-        "styles": ["apps/frontend2/src/styles.scss"],
+        "styles": [
+          "apps/frontend2/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -82,10 +86,22 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/frontend2"],
+      "outputs": [
+        "coverage/apps/frontend2"
+      ],
       "options": {
         "jestConfig": "apps/frontend2/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "echo 'this will deploy api'"
+          }
+        ]
       }
     }
   },

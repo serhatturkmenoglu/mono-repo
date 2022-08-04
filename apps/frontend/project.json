@@ -84,6 +84,16 @@
         "jestConfig": "apps/frontend/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "echo 'this will deploy frontend'"
+          }
+        ]
+      }
     }
   },
   "tags": []
