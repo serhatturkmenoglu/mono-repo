@@ -10,6 +10,7 @@
     "start:frontend": "nx serve frontend",
     "build": "nx build",
     "build-affected": "nx affected --target=build",
+    "affected:deploy": "npx nx affected --target deploy",
     "test": "nx test"
   },
   "private": true,
