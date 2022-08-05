@@ -12,8 +12,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
    console.log(data());
-   console.log("merhaba");
-   
   }
   
   constructor(public http: HttpClient){

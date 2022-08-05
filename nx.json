@@ -5,7 +5,8 @@
     "defaultBase": "master"
   },
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "defaultCollection": "@nrwl/angular"
   },
   "implicitDependencies": {
     "package.json": {
@@ -24,15 +25,10 @@
           "test",
           "e2e"
         ],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true,
         "accessToken": "MGY3MWM5ZmYtNjdkMy00YmJmLTgwN2UtZWJmYWU3ZmQyODljfHJlYWQtd3JpdGU="
       }
-    }
-  },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ]
     }
   },
   "targetDependencies": {
@@ -42,7 +38,7 @@
         "projects": "dependencies"
       }
     ],
-    "deploy": [
+    "docker": [
       {
         "target": "build",
         "projects": "self"
@@ -50,7 +46,7 @@
     ]
   },
   "generators": {
-    "@nrwl/angular:application": {
+    "angular:application": {
       "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
@@ -62,6 +58,10 @@
     },
     "@nrwl/angular:component": {
       "style": "scss"
+    },
+    "@nrwl/express:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "frontend"

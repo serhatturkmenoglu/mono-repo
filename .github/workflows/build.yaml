@@ -82,6 +82,6 @@ jobs:
           cache: 'npm'
           node-version-file: '.nvmrc'
       - run: npm install
-      - run: npx nx affected --target=deploy
+      - run: npx nx affected --target=docker
         env:
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
