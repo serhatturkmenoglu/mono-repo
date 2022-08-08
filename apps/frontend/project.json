@@ -98,6 +98,7 @@
       }
     },
     "docker": {
+      "inputs": ["^build"],
       "executor": "@nx-tools/nx-docker:build",
       "options": {
         "metadata": {
