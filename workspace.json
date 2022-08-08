@@ -5,6 +5,7 @@
       "frontend-e2e": "apps/frontend-e2e",
       "frontend2": "apps/frontend2",
       "frontend2-e2e": "apps/frontend2-e2e",
-      "api": "apps/api"
+      "api": "apps/api",
+      "data":"libs/data"
     }
   }
