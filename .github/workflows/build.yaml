@@ -8,49 +8,11 @@ on:
     branches: [master]
 
 env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
   NX_BRANCH: ${{ github.event.number || github.ref }}
   NX_RUN_GROUP: ${{ github.run_id }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-  PRISMA_HIDE_UPDATE_MESSAGE: 'true'
 
 jobs:
-  agents:
-    name: Agent ${{ matrix.agent }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-    strategy:
-      matrix:
-        agent: [1]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: 'npm'
-          node-version-file: '.nvmrc'
-      - run: npm ci
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: npx nx-cloud start-agent
-
-  main:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
-    steps:
-      - name: Checkout [main]
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v2
-      - uses: actions/setup-node@v3
-        with:
-          cache: 'npm'
-          node-version-file: '.nvmrc'
-      - run: npm ci
-      - run: npx nx-cloud start-ci-run
-      - run: npx nx affected --target=build --parallel --max-parallel=3
-      - run: npx nx-cloud stop-all-agents
-
   docker-build:
     if: ${{ github.event_name != 'pull_request' }}
     needs: main
@@ -81,6 +43,7 @@ jobs:
           cache: 'npm'
           node-version-file: '.nvmrc'
       - run: npm install
+      - run: npx nx affected --target=build
       - run: npx nx affected --target=docker
         env:
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

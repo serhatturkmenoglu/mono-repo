@@ -52,6 +52,7 @@
       }
     },
     "docker": {
+      "inputs": ["default", "^prod"],
       "executor": "@nx-tools/nx-docker:build",
       "options": {
         "metadata": {

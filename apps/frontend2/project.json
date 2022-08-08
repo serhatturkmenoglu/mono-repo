@@ -95,10 +95,16 @@
       }
     },
     "docker": {
+      "inputs": [
+        "default",
+        "^prod"
+      ],
       "executor": "@nx-tools/nx-docker:build",
       "options": {
         "metadata": {
-          "images": ["ghcr.io/serhatturkmenoglu/mono-repo/frontend2"],
+          "images": [
+            "ghcr.io/serhatturkmenoglu/mono-repo/frontend2"
+          ],
           "load": true,
           "tags": [
             "type=schedule",
