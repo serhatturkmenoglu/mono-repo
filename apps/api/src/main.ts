@@ -3,7 +3,9 @@ import { data } from '@mono-repo/data';
 import { inspect } from 'util';
 
 const app = express();
-
+app.get('/ready', (req, res) => {
+  res.send({ message: 'Api is ready' });
+});
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
 });
