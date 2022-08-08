@@ -8,6 +8,7 @@ on:
     branches: [master]
 
 env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
   NX_BRANCH: ${{ github.event.number || github.ref }}
   NX_RUN_GROUP: ${{ github.run_id }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
@@ -15,7 +16,6 @@ env:
 jobs:
   docker-build:
     if: ${{ github.event_name != 'pull_request' }}
-    needs: main
     runs-on: ubuntu-latest
     env:
       NX_CLOUD_DISTRIBUTED_EXECUTION: false
