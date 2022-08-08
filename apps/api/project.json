@@ -4,6 +4,7 @@
   "projectType": "application",
   "targets": {
     "build": {
+      "executor": "@nrwl/express",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/api",
