@@ -18,4 +18,5 @@ export class AppComponent implements OnInit{
   constructor(public http: HttpClient){
     http.get('/api').subscribe(console.log)
   }
+  
 }

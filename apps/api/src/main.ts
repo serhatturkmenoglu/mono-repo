@@ -9,6 +9,7 @@ app.get('/api', (req, res) => {
 });
 app.get('/data', (req, res) => {
   console.log('/data ',inspect(data));
+  
   res.send({ data: data() });
 });
 const port = process.env.port || 3333;
